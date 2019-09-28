@@ -1,0 +1,7 @@
+<view class="fl_l_c">
+	<view style="height:300rpx;"></view>
+	<image src="/images/logo-white.png" style="width:200rpx;height:200rpx;margin-bottom:30rpx;"></image>
+	<view class="co_f fw_b" style="font-size:60rpx;">笑一笑，十年少</view>
+	<view class="co_f fw_b" style="font-size:60rpx;">愁一愁，白了头</view>
+</view>
+
