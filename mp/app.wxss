@@ -319,6 +319,10 @@ textarea {
   border: 1px solid #ef2b2b;
 }
 
+.btn_middle{
+  width: 600rpx;
+}
+
 /* hover色 */
 
 .hover {
