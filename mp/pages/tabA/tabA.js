@@ -3,19 +3,23 @@ import {
 } from "../../utils/service.js";
 
 import {
+  ccloading,
+  ccloadingHide,
   cctoast
 } from "../../utils/util.js";
 
 Page({
-  onReady() {
+  data: {
+
+  },
+  onShow() {
+    ccloading();
     ajaxuserLogin(res => {
-      if (res == 0) {
-        wx.redirectTo({
-          url: "../reg/reg",
-        })
-      }
+      console.info(res)
+      ccloadingHide();
     }, (fail, msg) => {
       cctoast(msg)
+      ccloadingHide();
     })
-  }
+  },
 })

@@ -1,14 +1,15 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/lead/lead",
     "pages/tabA/tabA",
-    "pages/tabB/tabB"
+    "pages/tabB/tabB",
+    "pages/reg/reg"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ef2b2b",
-    "navigationBarTitleText": ""
+    "navigationBarTitleText": "",
+    "backgroundColor": "#ffffff"
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
@@ -26,7 +27,6 @@
         "text": "我的",
         "iconPath": "images/tabB.png",
         "selectedIconPath": "images/tabB_on.png"
-        
       }
     ]
   }

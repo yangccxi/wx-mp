@@ -319,6 +319,10 @@ textarea {
   border: 1px solid #ef2b2b;
 }
 
+.btn_small{
+  width: 300rpx;
+}
+
 .btn_middle{
   width: 600rpx;
 }
@@ -326,7 +330,7 @@ textarea {
 /* hover色 */
 
 .hover {
-  opacity: 0.6;
+  background-color: #d41616;
   transition: 0.3s;
 }
 

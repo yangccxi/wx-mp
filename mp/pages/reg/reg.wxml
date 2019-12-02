@@ -1,0 +1,17 @@
+<view style="height:60rpx;"></view>
+
+<view bindtap="cook" class="box fl_l_c">
+  <image class="img" src="/images/cook.jpg"></image>
+  <view>我是厨师</view>
+  <icon type="success" color="#{{cook?'ef2b2b':'cccccc'}}"></icon>
+</view>
+
+<view bindtap="eat" class="box fl_l_c">
+  <image class="img" src="/images/eat.jpg"></image>
+  <view>我是吃货</view>
+  <icon type="success" color="#{{eat?'ef2b2b':'cccccc'}}"></icon>
+</view>
+
+<view bindtap="save" hover-class="hover" class="btn btn_small" style="margin-top:30rpx;">选好了</view>
+
+<view style="height:60rpx;"></view>
