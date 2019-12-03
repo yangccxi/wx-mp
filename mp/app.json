@@ -5,6 +5,9 @@
     "pages/tabB/tabB",
     "pages/reg/reg"
   ],
+  "usingComponents": {
+    "pullDown": "/component/pullDown/pullDown"
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ef2b2b",

@@ -10,16 +10,11 @@ import {
 
 Page({
   data: {
-
+    type: 0
   },
   onShow() {
-    ccloading();
-    ajaxuserLogin(res => {
-      console.info(res)
-      ccloadingHide();
-    }, (fail, msg) => {
-      cctoast(msg)
-      ccloadingHide();
+    this.setData({
+      type: getApp().type
     })
   },
 })

@@ -1,0 +1,4 @@
+<scroll-view style="height:{{height}}px;" scroll-y scroll-top="{{top}}" bindscrolltolower="lower">
+  <slot></slot>
+  <view wx:if="{{more}}" style="height:88rpx;" class="fl_c fs28 co_9">{{text}}</view>
+</scroll-view>

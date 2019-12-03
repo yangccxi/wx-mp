@@ -1,1 +1,4 @@
-<button bindtap="test">测试</button>
+<!-- 厨师 -->
+<block wx:if="{{type==1}}">
+  <pullDown></pullDown>
+</block>

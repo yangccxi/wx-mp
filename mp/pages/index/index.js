@@ -13,6 +13,11 @@ Page({
         wx.redirectTo({
           url: "../reg/reg",
         })
+      }else{
+        getApp().type = res;
+        wx.switchTab({
+          url: "../tabA/tabA"
+        })
       }
     }, (fail, msg) => {
       cctoast(msg)
