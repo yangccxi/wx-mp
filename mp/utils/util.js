@@ -29,3 +29,12 @@ export const ccnavigateTo = (url) => {
     }
   })
 }
+
+//计算比例尺寸高度
+export const cciphone6size = (size, call) => {
+  wx.getSystemInfo({
+    success(res) {
+      call(Math.round(res.windowHeight - (res.windowWidth * size / 750)));
+    }
+  })
+}

@@ -6,7 +6,8 @@
     "pages/reg/reg"
   ],
   "usingComponents": {
-    "pullDown": "/component/pullDown/pullDown"
+    "pullDown": "/component/pullDown/pullDown",
+    "nothing": "/component/nothing/nothing"
   },
   "window": {
     "backgroundTextStyle": "light",

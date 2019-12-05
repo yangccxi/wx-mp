@@ -1,0 +1,6 @@
+<block wx:if="{{show}}">
+  <view style="height:200rpx;"></view>
+  <image src="/images/nothing.jpg" style="width:200rpx;height:200rpx;margin:0 auto;"></image>
+  <view class="t_c co_9" style="margin:30rpx 0 0;">{{nothing}}</view>
+  <view bindtap="click" wx:if="{{showBtn}}" class="btn btn_small" style="margin-top:60rpx;" hover-class="hover">{{btn}}</view>
+</block>
