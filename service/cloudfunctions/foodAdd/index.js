@@ -1,7 +1,8 @@
-//用户选择身份
-//入参 int type 1为厨师，2为吃货  
-//入参 string headImg 头像
+//厨师插入菜谱
+//入参 string img 图片
 //入参 string name 名称
+//入参 string difficulty 菜谱难度
+//入参 string foodType 菜谱类型
 const cloud = require('wx-server-sdk')
 
 cloud.init()
@@ -16,13 +17,14 @@ exports.main = async(event, context) => {
     msg: "出现未知故障，请稍后再试",
   }
 
-  await db.collection("user").add({
+  await db.collection("food").add({
     data: {
       openId: _openId,
-      type: event.type,
-      headImg: event.headImg,
+      difficulty: event.difficulty,
+      img: event.img,
       name: event.name,
-      time: new Date().getTime()
+      foodType: event.foodType,
+      time: new Date().getTime(),
     }
   }).then(res => {
     _r.success = true;

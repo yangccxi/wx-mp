@@ -1,0 +1,16 @@
+<pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
+  <view style="height:30rpx;"></view>
+  <view wx:for="{{list}}" wx:key="{{index}}" class="img p_r o_h" style="margin-bottom:30rpx;">
+    <image mode="aspectFill" src="{{item.img}}"></image>
+    <view style="background-color:rgba(0,0,0,0.6);width:100%;height:96rpx;left:0;bottom:0;padding:0 30rpx;" class="p_a fl_l_s">
+      <view class="co_f fw_b el_one" style="margin-bottom:6rpx;">{{item.name}}</view>
+      <view class="co_f fs24">{{item.foodType}} {{item.difficulty}}难度</view>
+    </view>
+    <view bindtap="delete" data-id="{{item._id}}" style="width:96rpx;height:96rpx;bottom:0;right:0;" class="p_a fl_c">
+      <image src="/images/delete.png" style="width:48rpx;height:48rpx;"></image>
+    </view>
+  </view>
+  <nothing bind:click="foodAdd" show="{{nothing}}" showBtn="{{true}}" btn="添加菜谱" nothing="暂时没有菜谱哦~ 可以马上添加菜谱"></nothing>
+</pullDown>
+
+<floatBtn bind:click="foodAdd"></floatBtn>

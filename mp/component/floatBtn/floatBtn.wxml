@@ -1,0 +1,1 @@
+<image bindtap="tap" class="p_f a" src="/images/add.png" hover style="width:80rpx;height:80rpx;border-radius:80rpx;right:60rpx;bottom:60rpx;z-index:10;"></image>

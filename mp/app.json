@@ -3,11 +3,14 @@
     "pages/index/index",
     "pages/tabA/tabA",
     "pages/tabB/tabB",
-    "pages/reg/reg"
+    "pages/reg/reg",
+    "cook/pages/food/food",
+    "cook/pages/foodAdd/foodAdd"
   ],
   "usingComponents": {
     "pullDown": "/component/pullDown/pullDown",
-    "nothing": "/component/nothing/nothing"
+    "nothing": "/component/nothing/nothing",
+    "floatBtn": "/component/floatBtn/floatBtn"
   },
   "window": {
     "backgroundTextStyle": "light",

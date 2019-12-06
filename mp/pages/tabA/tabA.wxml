@@ -1,17 +1,36 @@
 <!-- 厨师 -->
-<!-- <block wx:if="{{type==1}}"> -->
-<view style="height:96rpx;padding-left:30rpx;" class="fl_b">
-  <view class="fw_b">我的拿手好菜</view>
-  <button class="fl_c" style="width:96rpx;height:96rpx;">
-    <image style="width:40rpx;height:40rpx;" src="/images/msg.png"></image>
-  </button>
-</view>
-<pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
+<block wx:if="{{type==1}}">
+  <view style="height:96rpx;padding-left:30rpx;" class="fl_b">
+    <view class="fw_b">火力全开</view>
+    <button bindtap="food" class="fl_c" style="width:160rpx;height:96rpx;">
+      <view class="fs26 co_te">菜谱</view>
+      <image style="width:60rpx;height:60rpx;margin-left:6rpx;" src="/images/food.png"></image>
+    </button>
+  </view>
+  <pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
 
-  <!-- <view class="img p_r o_h">
+    <!-- <view class="img p_r o_h">
     <image src="http://img4.imgtn.bdimg.com/it/u=2787041215,72607509&fm=26&gp=0.jpg"></image>
     <view style="background-color:rgba(0,0,0,0.5);width:100%;height:96rpx;left:0;bottom:0;padding:10rpx 30rpx;" class="p_a co_f el_two">辣椒炒肉</view>
   </view> -->
-  <nothing show="{{true}}" showBtn="{{true}}" btn="添加菜品" nothing="暂时没有菜品哦~ 快点添加有点吧"></nothing>
-</pullDown>
-<!-- </block> -->
+    <nothing show="{{true}}" showBtn="{{true}}" btn="分享菜肴" nothing="暂时没有服务哦~ 可以分享菜肴给朋友"></nothing>
+  </pullDown>
+</block>
+<!-- 吃货 -->
+<block wx:elif="{{type==2}}">
+  <view style="height:96rpx;padding-left:30rpx;" class="fl_b">
+    <view class="fw_b">吃货天堂</view>
+    <button bindtap="food" class="fl_c" style="width:160rpx;height:96rpx;">
+      <view class="fs26 co_te">美食</view>
+      <image style="width:60rpx;height:60rpx;margin-left:6rpx;" src="/images/food.png"></image>
+    </button>
+  </view>
+  <pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
+
+    <!-- <view class="img p_r o_h">
+    <image src="http://img4.imgtn.bdimg.com/it/u=2787041215,72607509&fm=26&gp=0.jpg"></image>
+    <view style="background-color:rgba(0,0,0,0.5);width:100%;height:96rpx;left:0;bottom:0;padding:10rpx 30rpx;" class="p_a co_f el_two">辣椒炒肉</view>
+  </view> -->
+    <nothing show="{{true}}" showBtn="{{true}}" btn="寻找美食" nothing="暂时没有美食提供哦~"></nothing>
+  </pullDown>
+</block>

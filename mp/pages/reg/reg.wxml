@@ -12,6 +12,6 @@
   <icon type="success" color="#{{eat?'ef2b2b':'cccccc'}}"></icon>
 </view>
 
-<view bindtap="save" hover-class="hover" class="btn btn_small" style="margin-top:30rpx;">选好了</view>
+<button open-type="getUserInfo" bindgetuserinfo="save" hover-class="hover" class="btn btn_small" style="margin-top:30rpx;">选好了</button>
 
 <view style="height:60rpx;"></view>

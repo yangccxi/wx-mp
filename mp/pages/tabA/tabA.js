@@ -1,12 +1,9 @@
 import {
-  ajaxuserLogin
-} from "../../utils/service.js";
-
-import {
   ccloading,
   ccloadingHide,
   cctoast,
   cciphone6size,
+  ccnavigateTo,
 } from "../../utils/util.js";
 
 Page({
@@ -29,4 +26,8 @@ Page({
       })
     })
   },
+  //厨师我的菜谱
+  food() {
+    ccnavigateTo("/cook/pages/food/food");
+  }
 })

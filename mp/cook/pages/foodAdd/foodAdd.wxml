@@ -1,0 +1,21 @@
+<view style="height:30rpx;"></view>
+<image bindtap="upImg" wx:if="{{img}}" mode="aspectFill" class="img_box" src="{{img}}"></image>
+<view bindtap="upImg" wx:else class="img_box fl_l_c" style="border:1px dashed #ccc">
+  <image src="/images/add.png" style="width:60rpx;height:60rpx;margin-bottom:20rpx;"></image>
+  <view class="co_9 fa26">上传菜谱图片</view>
+</view>
+<input bindinput="name" class="br_bot" placeholder="请输入菜谱名称，最多20字" placeholder-class="co_9" maxlength="20" style="width:690rpx;margin:30rpx 30rpx 0;"></input>
+<picker range="{{difficulty}}" bindchange="difficulty">
+  <view class="fl_b br_bot" style="height:96rpx;margin:0 30rpx;">
+    <view>难度：{{difficultyT}}</view>
+    <view class="arrow" style="margin-right:20rpx;"></view>
+  </view>
+</picker>
+<picker range="{{foodType}}" bindchange="foodType">
+  <view class="fl_b br_bot" style="height:96rpx;margin:0 30rpx;">
+    <view>菜系：{{foodTypeT}}</view>
+    <view class="arrow" style="margin-right:20rpx;"></view>
+  </view>
+</picker>
+<view bindtap="save" class="btn" style="margin-top:100rpx;" hover-class="hover">添加菜谱</view>
+<view style="height:60rpx;"></view>

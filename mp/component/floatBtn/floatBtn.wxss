@@ -1,0 +1,5 @@
+@import "../../app.wxss";
+
+.a{
+  box-shadow: 0 10rpx 20rpx #ef2b2b;
+}
