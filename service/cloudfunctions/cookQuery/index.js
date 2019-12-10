@@ -1,26 +1,28 @@
-//吃货查询绑定关系
-const cloud = require('wx-server-sdk');
+// 查询大厨
+// 入参 string keyword 关键字
+const cloud = require('wx-server-sdk')
 
-cloud.init();
+cloud.init()
 
+// 云函数入口函数
 exports.main = async(event, context) => {
   const wxContext = cloud.getWXContext();
-  const db = cloud.database();
   const _openId = wxContext.OPENID;
-
+  const db = cloud.database();
   let _r = {
     success: false,
     msg: "出现未知故障，请稍后再试",
-    openId: "",
+    list: []
   }
-
-  await db.collection("relation").where({
-    openId: _openId
+  await db.collection("user").where({
+    name: {
+      $regex: '.*' + event.keyword,
+      $options: 'i'
+    }
   }).get().then(res => {
-    //满足条件
     _r.success = true;
     _r.msg = "成功";
-    if (res.data.length) _r.openId = res.data[0].cookOpenId[0];
+    _r.list = res.data;
   }).catch(err => {
     console.info("openId=" + _openId + "=>出现问题：" + err);
   })
