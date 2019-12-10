@@ -1,0 +1,12 @@
+.img {
+  width: 690rpx;
+  height: 400rpx;
+  margin: 0 auto;
+  border-radius: 10rpx;
+}
+
+.img image {
+  width: 690rpx;
+  height: 400rpx;
+  border-radius: 10rpx;
+}

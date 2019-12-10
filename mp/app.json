@@ -5,7 +5,10 @@
     "pages/tabB/tabB",
     "pages/reg/reg",
     "cook/pages/food/food",
-    "cook/pages/foodAdd/foodAdd"
+    "cook/pages/foodAdd/foodAdd",
+    "eat/pages/food/food",
+    "eat/pages/bindCook/bindCook",
+    "eat/pages/foodDetail/foodDetail"
   ],
   "usingComponents": {
     "pullDown": "/component/pullDown/pullDown",

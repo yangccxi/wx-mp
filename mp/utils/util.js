@@ -20,6 +20,25 @@ export const cctoast = (text) => {
   })
 }
 
+//modal
+export const ccmodal = (title, obj) => {
+  wx.showModal({
+    title: "提示",
+    content: String(title),
+    showCancel: obj.showCancel || false,
+    confirmColor: "#2fd996",
+    cancelText: obj.cancelText || "取消",
+    confirmText: obj.confirmText || "确定",
+    success(res) {
+      if (res.confirm) {
+        if (obj.success) obj.success();
+      } else {
+        if (obj.cancel) obj.cancel();
+      }
+    }
+  })
+}
+
 //页面跳转
 export const ccnavigateTo = (url) => {
   wx.navigateTo({

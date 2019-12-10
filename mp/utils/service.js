@@ -3,6 +3,7 @@ let app = getApp();
 import {
   USER,
   FOOD,
+  ORDER,
 } from "./config.js";
 
 /**
@@ -150,8 +151,135 @@ export const ajaxfoodDelete = (id, success, fail) => {
 
 //吃货查找厨师绑定关系
 export const ajaxuserRelation = (success, fail) => {
-  ajax(USER.relation, {
-    success() {
+  if (getApp().bindOpenId != "") {
+    success(getApp().bindOpenId);
+  } else {
+    ajax(USER.relation, {
+      success(res) {
+        getApp().bindOpenId = res.openId;
+        success(res.openId);
+      },
+      fail(t, m) {
+        fail(t, m);
+      }
+    })
+  }
+}
+
+//吃货根据openId查询菜谱列表
+export const ajaxfoodQueryByOpenId = (openId, success, fail) => {
+  ajax(FOOD.queryByOpenId, {
+    data: {
+      openId
+    },
+    success(res) {
+      success(res.list)
+    },
+    fail(t, m) {
+      fail(t, m);
+    }
+  })
+}
+
+//获取大厨二维码
+export const ajaxCookQRCode = (success, fail) => {
+  ajax(USER.cookQRCode, {
+    success(res) {
+      success(res)
+    },
+    fail(t, m) {
+      fail(t, m);
+    }
+  })
+}
+
+//查询大厨
+export const ajaxcookQuery = (keyword, success, fail) => {
+  ajax(USER.cookQuery, {
+    data: {
+      keyword
+    },
+    success(res) {
+      success(res.list);
+    },
+    fail(t, m) {
+      fail(t, m);
+    }
+  })
+}
+
+//吃货绑定大厨
+export const ajaxbindCook = (openId, success, fail) => {
+  ajax(USER.bindCook, {
+    data: {
+      openId
+    },
+    success(res) {
+      success();
+    },
+    fail(t, m) {
+      fail(t, m);
+    }
+  })
+}
+
+//吃货下单
+export const ajaxorderAdd = (date, time, remark, food, success, fail) => {
+  ajax(ORDER.add, {
+    data: {
+      date,
+      time,
+      remark,
+      food,
+      cookOpenId: getApp().bindOpenId,
+    },
+    success(res) {
+      success();
+    },
+    fail(t, m) {
+      fail(t, m);
+    }
+  })
+}
+
+//订单
+export const ajaxQuery = (type, success, fail) => {
+  let _url = ORDER.eatQuery;
+  if (type == "cook") _url = ORDER.cookQuery;
+  ajax(_url, {
+    success(res) {
+      success(res.list);
+    },
+    fail(t, m) {
+      fail(t, m);
+    }
+  })
+}
+
+//大厨完成订单
+export const ajaxorderUpdate = (cookImg, id, success, fail) => {
+  ajax(ORDER.update, {
+    data: {
+      cookImg,
+      id,
+    },
+    success(res) {
+      success();
+    },
+    fail(t, m) {
+      fail(t, m);
+    }
+  })
+}
+
+//吃货评价完成订单
+export const ajaxorderDone = (appraise, id, success, fail) => {
+  ajax(ORDER.done, {
+    data: {
+      appraise,
+      id,
+    },
+    success(res) {
       success();
     },
     fail(t, m) {

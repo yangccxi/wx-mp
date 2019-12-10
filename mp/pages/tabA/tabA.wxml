@@ -1,6 +1,6 @@
 <!-- 厨师 -->
 <block wx:if="{{type==1}}">
-  <view style="height:96rpx;padding-left:30rpx;" class="fl_b">
+  <view style="height:96rpx;padding-left:30rpx;" class="fl_b bg_f">
     <view class="fw_b">火力全开</view>
     <button bindtap="food" class="fl_c" style="width:160rpx;height:96rpx;">
       <view class="fs26 co_te">菜谱</view>
@@ -8,29 +8,72 @@
     </button>
   </view>
   <pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
-
-    <!-- <view class="img p_r o_h">
-    <image src="http://img4.imgtn.bdimg.com/it/u=2787041215,72607509&fm=26&gp=0.jpg"></image>
-    <view style="background-color:rgba(0,0,0,0.5);width:100%;height:96rpx;left:0;bottom:0;padding:10rpx 30rpx;" class="p_a co_f el_two">辣椒炒肉</view>
-  </view> -->
-    <nothing show="{{true}}" showBtn="{{true}}" btn="分享菜肴" nothing="暂时没有服务哦~ 可以分享菜肴给朋友"></nothing>
+    <view style="height:30rpx;"></view>
+    <view class="bg_f" style="width:690rpx;margin:0 30rpx;border-radius:10rpx;overflow:hidden;" wx:for="{{list}}" wx:key="{{index}}">
+      <view class="fl_s fw_b" style="margin:0 30rpx;height:96rpx;">{{item.date}}的{{item.time}}</view>
+      <swiper class="p_r" indicator-dots autoplay indicator-active-color="#ef2b2b" style="width:690rpx;height:400rpx;">
+        <swiper-item wx:for="{{item.food}}" wx:key="{{index}}">
+          <image mode="aspectFill" style="width:690rpx;height:400rpx;" src="{{item.img}}"></image>
+          <view style="background-color:rgba(0,0,0,0.6);width:100%;height:96rpx;left:0;bottom:0;padding:0 30rpx;" class="p_a fl_l_s">
+            <view class="co_f fw_b el_one" style="margin-bottom:6rpx;">{{item.name}}</view>
+            <view class="co_f fs24">{{item.foodType}} {{item.difficulty}}难度</view>
+          </view>
+        </swiper-item>
+      </swiper>
+      <view class="fl_s" style="padding:30rpx;">备注：{{item.remark}}</view>
+      <view hover-class="hover" bindtap="cook" data-id="{{item._id}}" data-index="{{index}}" wx:if="{{item.status=='wait'}}" class="fl_c co_f bg_te fw_b" style="height:96rpx;">搞定ta</view>
+      <view hover-class="hover" bindtap="look" data-img="{{item.cookImg}}" data-appraise="{{item.appraise}}" wx:elif="{{item.status=='done'}}" class="fl_c co_f bg_te fw_b" style="height:96rpx;">戳我看评价</view>
+    </view>
+    <nothing show="{{nothing}}" showBtn="{{true}}" btn="分享菜肴" nothing="暂时没有服务哦~ 可以分享菜肴给朋友"></nothing>
   </pullDown>
 </block>
 <!-- 吃货 -->
 <block wx:elif="{{type==2}}">
-  <view style="height:96rpx;padding-left:30rpx;" class="fl_b">
+  <view style="height:96rpx;padding-left:30rpx;" class="fl_b bg_f">
     <view class="fw_b">吃货天堂</view>
-    <button bindtap="food" class="fl_c" style="width:160rpx;height:96rpx;">
+    <button bindtap="foodE" class="fl_c" style="width:160rpx;height:96rpx;">
       <view class="fs26 co_te">美食</view>
       <image style="width:60rpx;height:60rpx;margin-left:6rpx;" src="/images/food.png"></image>
     </button>
   </view>
   <pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
-
-    <!-- <view class="img p_r o_h">
-    <image src="http://img4.imgtn.bdimg.com/it/u=2787041215,72607509&fm=26&gp=0.jpg"></image>
-    <view style="background-color:rgba(0,0,0,0.5);width:100%;height:96rpx;left:0;bottom:0;padding:10rpx 30rpx;" class="p_a co_f el_two">辣椒炒肉</view>
-  </view> -->
-    <nothing show="{{true}}" showBtn="{{true}}" btn="寻找美食" nothing="暂时没有美食提供哦~"></nothing>
+    <view style="height:30rpx;"></view>
+    <view class="bg_f" style="width:690rpx;margin:0 30rpx;border-radius:10rpx;overflow:hidden;" wx:for="{{list}}" wx:key="{{index}}">
+      <view class="fl_s fw_b" style="margin:0 30rpx;height:96rpx;">{{item.date}}的{{item.time}}</view>
+      <swiper class="p_r" indicator-dots autoplay indicator-active-color="#ef2b2b" style="width:690rpx;height:400rpx;">
+        <swiper-item wx:for="{{item.food}}" wx:key="{{index}}">
+          <image mode="aspectFill" style="width:690rpx;height:400rpx;" src="{{item.img}}"></image>
+          <view style="background-color:rgba(0,0,0,0.6);width:100%;height:96rpx;left:0;bottom:0;padding:0 30rpx;" class="p_a fl_l_s">
+            <view class="co_f fw_b el_one" style="margin-bottom:6rpx;">{{item.name}}</view>
+            <view class="co_f fs24">{{item.foodType}} {{item.difficulty}}难度</view>
+          </view>
+        </swiper-item>
+      </swiper>
+      <view class="fl_s" style="padding:30rpx;">备注：{{item.remark}}</view>
+      <view hover-class="hover" bindtap="appraise" data-id="{{item._id}}" data-index="{{index}}" data-img="{{item.cookImg}}" wx:if="{{item.status=='cook'}}" class="fl_c co_f bg_te fw_b" style="height:96rpx;">评价ta</view>
+    </view>
+    <nothing show="{{nothing}}" showBtn="{{true}}" btn="寻找美食" nothing="暂时没有美食提供哦~"></nothing>
   </pullDown>
+</block>
+
+<block wx:if="{{appraise}}">
+  <view style="overflow:hidden;z-index:6;width:600rpx;height:800rpx;border-radius:10rpx;left:50%;margin-left:-300rpx;top:50%;margin-top:-400rpx;" class="bg_f p_f">
+    <image bindtap="pre" data-img="{{cookImg}}" mode="aspectFill" style="width:600rpx;height:400rpx;" src="{{cookImg}}"></image>
+    <view style="height:30rpx;"></view>
+    <slider activeColor="#ef2b2b" value="{{3}}" min="{{1}}" max="{{5}}" bindchanging="slide"></slider>
+    <view style="height:30rpx;"></view>
+    <view class="t_c fw_b co_te">{{slide}}</view>
+    <view style="height:60rpx;"></view>
+    <view bindtap="tall" hover-class="hover" class="btn btn_small">告诉ta</view>
+  </view>
+  <view class="mask" bindtap="hide"></view>
+</block>
+
+<block wx:if="{{look}}">
+  <view style="overflow:hidden;z-index:6;width:600rpx;height:600rpx;border-radius:10rpx;left:50%;margin-left:-300rpx;top:50%;margin-top:-300rpx;" class="bg_f p_f">
+    <image bindtap="pre" data-img="{{cookImg}}" mode="aspectFill" style="width:600rpx;height:400rpx;" src="{{cookImg}}"></image>
+    <view style="height:100rpx;"></view>
+    <view class="t_c fw_b co_te">{{slide}}</view>
+  </view>
+  <view class="mask" bindtap="hide"></view>
 </block>

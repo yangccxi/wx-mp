@@ -5,13 +5,26 @@ export const USER = {
   "login": "login", //用户登录
   "reg": "reg", //用户注册
   "relation": "relationQuery", //用户绑定关系
+  "cookQRCode": "cookQRCode", //大厨二维码
+  "cookQuery": "cookQuery", //查询大厨
+  "bindCook": "relationAdd", //绑定大厨
 }
 
 //菜谱接口
 export const FOOD = {
-  "add": "foodAdd",
-  "query": "foodQuery",
-  "delete": "foodDelete",
+  "add": "foodAdd", //新增菜谱
+  "query": "foodQuery", //查询菜谱列表
+  "delete": "foodDelete", //删除菜谱
+  "queryByOpenId": "foodQueryByOpenId", //根据openId查询菜谱列表
+}
+
+//订单
+export const ORDER = {
+  "add": "orderAdd", //下单
+  "eatQuery": "orderEatQuery", //吃货订单
+  "cookQuery": "orderCookQuery", //大厨订单
+  "update": "orderUpdate", //大厨完成订单
+  "done": "orderDone", //吃货评价完成订单
 }
 
 //默认参数

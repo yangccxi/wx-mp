@@ -1,0 +1,22 @@
+<picker range="{{dateR}}" bindchange="date">
+  <view class="fl_b bg_f br_bot" style="height:96rpx;padding:0 30rpx;">
+    <view>选择日期</view>
+    <view class="fl_s">
+      <view class="co_9 fs26">{{date}}</view>
+      <view class="arrow" style="margin-left:10rpx;"></view>
+    </view>
+  </view>
+</picker>
+<picker range="{{timeR}}" bindchange="time">
+  <view class="fl_b bg_f br_bot" style="height:96rpx;padding:0 30rpx;">
+    <view>选择时间</view>
+    <view class="fl_s">
+      <view class="co_9 fs26">{{time}}</view>
+      <view class="arrow" style="margin-left:10rpx;"></view>
+    </view>
+  </view>
+</picker>
+<view class="br_bot" style="padding:30rpx;">备注</view>
+<textarea bindinput="remark" maxlength="200" placeholder="口味，偏好" placeholder-class="co_9" class="bg_f br_bot" style="width:750rpx;height:300rpx;padding:30rpx;"></textarea>
+
+<view bindtap="save" hover-class="hover" class="btn" style="margin-top:100rpx;">确认</view>

@@ -1,0 +1,8 @@
+<input focus bindconfirm="search" class="bg_f br_bot" style="width:750rpx;padding:0 30rpx;" placeholder="搜索大厨" placeholder-class="co_9"></input>
+<pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
+  <view bindtap="choose" data-openid="{{item.openId}}" wx:for="{{list}}" wx:key="{{index}}" hover-class="hover_gray" style="height:130rpx;padding-left:30rpx;" class="bg_f fl_s br_bot">
+    <image mode="aspectFill" class="img" src="{{item.headImg}}"></image>
+    <view class="fs28 el_one" style="margin-left:30rpx;width:500rpx;">{{item.name}}</view>
+  </view>
+  <nothing show="{{nothing}}" nothing="暂未找到你要找的大厨哦~"></nothing>
+</pullDown>
