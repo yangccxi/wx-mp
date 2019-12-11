@@ -44,8 +44,14 @@ Page({
       _name = e.detail.userInfo.nickName;
     }
     ccloading()
-    ajaxuserReg(_type, _headImg, _name, success => {
+    ajaxuserReg(_type, _headImg, _name, (id, openId) => {
       getApp().type = _type;
+      getApp().user = {
+        "name": _name,
+        "headImg": _headImg,
+        "id": id,
+        "openId": openId
+      }
       ccloadingHide()
       wx.switchTab({
         url: "../tabA/tabA",

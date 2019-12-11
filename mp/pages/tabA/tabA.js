@@ -45,7 +45,6 @@ Page({
       ccloading();
       ajaxQuery(_type, list => {
         ccloadingHide();
-        console.info(list)
         let _list = list;
         let _now = new Date();
         let _nowS = new Date(_now.getFullYear() + "/" + (_now.getMonth() + 1) + "/" + _now.getDate()).getTime();

@@ -1,2 +1,18 @@
-<!--pages/tabB/tabB.wxml-->
-<text>pages/tabB/tabB.wxml</text>
+<view bindtap="headImg" hover-class="hover_gray" class="fl_b br_bot bg_f" style="height:160rpx;padding:0 30rpx;">
+  <image mode="aspectFill" src="{{headImg}}" style="width:130rpx;height:130rpx;border-radius:20rpx;margin-right:30rpx;"></image>
+  <image src="/images/edit.png" class="edit"></image>
+</view>
+<view class="fl_b br_bot bg_f p_r" style="height:96rpx;padding:0 30rpx;margin-bottom:30rpx;">
+  <input bindinput="name" maxlength="10" disabled="{{!editName}}" focus="{{focus}}" style="width:500rpx;" placeholder="请输入昵称" value="{{name}}"></input>
+  <image wx:if="{{!editName}}" src="/images/edit.png" class="edit"></image>
+  <view bindtap="saveName" wx:else class="co_te fw_b" style="padding:20rpx 0 20rpx 20rpx;">保存</view>
+  <view wx:if="{{!editName}}" bindtap="editName" class="edit_box p_a" style="right:0;top:0;"></view>
+</view>
+<view wx:if="{{type==1}}" bindtap="qrcode" hover-class="hover_gray" class="fl_b br_bot bg_f" style="height:96rpx;padding:0 30rpx;">
+  <view>我的二维码</view>
+  <image src="/images/qrcode.png" class="edit"></image>
+</view>
+<view wx:if="{{type==2}}" bindtap="myCook" hover-class="hover_gray" class="fl_b br_bot bg_f" style="height:96rpx;padding:0 30rpx;">
+  <view>我的大厨</view>
+  <view class="arrow"></view>
+</view>

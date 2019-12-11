@@ -1,8 +1,22 @@
-<input focus bindconfirm="search" class="bg_f br_bot" style="width:750rpx;padding:0 30rpx;" placeholder="搜索大厨" placeholder-class="co_9"></input>
-<pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
-  <view bindtap="choose" data-openid="{{item.openId}}" wx:for="{{list}}" wx:key="{{index}}" hover-class="hover_gray" style="height:130rpx;padding-left:30rpx;" class="bg_f fl_s br_bot">
-    <image mode="aspectFill" class="img" src="{{item.headImg}}"></image>
-    <view class="fs28 el_one" style="margin-left:30rpx;width:500rpx;">{{item.name}}</view>
+<block wx:if="{{hasScan}}">
+  <view style="height:200rpx;"></view>
+  <view class="co_f fw_b t_c" style="font-size:50rpx;margin-bottom:50rpx;">大厨在哪</view>
+  <view bindtap="scan" hover-class="hover_gray" class="btn btn_small fl_c" style="background-color:#fff;">
+    <image src="/images/scan.png" style="width:40rpx;height:40rpx;margin-right:10rpx;"></image>
+    <view class="fs28 co_te">扫一扫</view>
   </view>
-  <nothing show="{{nothing}}" nothing="暂未找到你要找的大厨哦~"></nothing>
-</pullDown>
+</block>
+
+<block wx:else>
+  <view style="height:200rpx;"></view>
+  <view class="t_c fw_b co_f" style="font-size:50rpx;margin-bottom:50rpx;">大厨来啦</view>
+  <image mode="aspectFill" style="width:300rpx;height:300rpx;border-radius:10rpx;margin:0 auto 30rpx;" src="{{user.headImg}}"></image>
+  <view class="t_c co_f fs36">{{user.name}}</view>
+  <view bindtap="save" hover-class="hover_gray" class="btn btn_small" style="background-color:#fff;margin:60rpx auto 30rpx;">
+    <view class="fs28 co_te">就ta啦</view>
+  </view>
+  <view bindtap="scan" hover-class="hover_gray" class="btn btn_small fl_c" style="background-color:#fff;">
+    <image src="/images/scan.png" style="width:40rpx;height:40rpx;margin-right:10rpx;"></image>
+    <view class="fs28 co_te">扫一扫</view>
+  </view>
+</block>

@@ -58,7 +58,6 @@ Page({
     ccloading();
     upImg(this.data.img, "food", {
       success: (res) => {
-        console.info(res)
         ajaxfoodAdd(res, this.data.name, this.data.difficultyT, this.data.foodTypeT, success => {
           ccloadingHide();
           cctoast("添加成功");

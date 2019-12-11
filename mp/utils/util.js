@@ -57,3 +57,12 @@ export const cciphone6size = (size, call) => {
     }
   })
 }
+
+//计算单位换算
+export const cciphone6scale = (callBack) => {
+  wx.getSystemInfo({
+    success(res) {
+      callBack(res.windowWidth / 750)
+    }
+  })
+}

@@ -8,7 +8,9 @@
     "cook/pages/foodAdd/foodAdd",
     "eat/pages/food/food",
     "eat/pages/bindCook/bindCook",
-    "eat/pages/foodDetail/foodDetail"
+    "eat/pages/foodDetail/foodDetail",
+    "cook/pages/qrcode/qrcode",
+    "eat/pages/myCook/myCook"
   ],
   "usingComponents": {
     "pullDown": "/component/pullDown/pullDown",
@@ -34,7 +36,7 @@
       },
       {
         "pagePath": "pages/tabB/tabB",
-        "text": "我的",
+        "text": "我",
         "iconPath": "images/tabB.png",
         "selectedIconPath": "images/tabB_on.png"
       }

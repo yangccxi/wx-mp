@@ -1,0 +1,4 @@
+<view style="height:100rpx;"></view>
+
+<image mode="aspectFill" style="width:300rpx;height:300rpx;border-radius:20rpx;margin:0 auto 60rpx;" src="{{headImg}}"></image>
+<view class="co_f t_c fw_b fs36">{{name}}</view>

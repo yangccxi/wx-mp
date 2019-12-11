@@ -8,13 +8,14 @@ import {
 
 Page({
   onReady() {
-    ajaxuserLogin(res => {
-      if (res == 0) {
+    ajaxuserLogin((type, user) => {
+      if (type == 0) {
         wx.redirectTo({
           url: "../reg/reg",
         })
-      }else{
-        getApp().type = res;
+      } else {
+        getApp().type = type;
+        getApp().user = user;
         wx.switchTab({
           url: "../tabA/tabA"
         })

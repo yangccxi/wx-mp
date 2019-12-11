@@ -24,7 +24,7 @@
       <view hover-class="hover" bindtap="cook" data-id="{{item._id}}" data-index="{{index}}" wx:if="{{item.status=='wait'}}" class="fl_c co_f bg_te fw_b" style="height:96rpx;">搞定ta</view>
       <view hover-class="hover" bindtap="look" data-img="{{item.cookImg}}" data-appraise="{{item.appraise}}" wx:elif="{{item.status=='done'}}" class="fl_c co_f bg_te fw_b" style="height:96rpx;">戳我看评价</view>
     </view>
-    <nothing show="{{nothing}}" showBtn="{{true}}" btn="分享菜肴" nothing="暂时没有服务哦~ 可以分享菜肴给朋友"></nothing>
+    <nothing show="{{nothing}}" showBtn="{{false}}" btn="分享菜肴" nothing="暂时没有服务哦~"></nothing>
   </pullDown>
 </block>
 <!-- 吃货 -->
@@ -52,7 +52,7 @@
       <view class="fl_s" style="padding:30rpx;">备注：{{item.remark}}</view>
       <view hover-class="hover" bindtap="appraise" data-id="{{item._id}}" data-index="{{index}}" data-img="{{item.cookImg}}" wx:if="{{item.status=='cook'}}" class="fl_c co_f bg_te fw_b" style="height:96rpx;">评价ta</view>
     </view>
-    <nothing show="{{nothing}}" showBtn="{{true}}" btn="寻找美食" nothing="暂时没有美食提供哦~"></nothing>
+    <nothing show="{{nothing}}" showBtn="{{true}}" bind:click="foodE" btn="寻找美食" nothing="暂时没有美食提供哦~"></nothing>
   </pullDown>
 </block>
 

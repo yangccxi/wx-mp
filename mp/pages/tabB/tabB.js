@@ -1,66 +1,111 @@
-// pages/tabB/tabB.js
+import {
+  ajaxuserEdit,
+  upImg,
+  ajaxuserRelation,
+} from "../../utils/service.js";
+
+import {
+  ccloading,
+  ccloadingHide,
+  cctoast,
+  ccnavigateTo,
+} from "../../utils/util.js";
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    headImg: "",
+    name: "",
+    editName: false,
+    focus: false,
+    type: 0,
 
+    nameD: ""
   },
+  onShow() {
+    let _user = getApp().user;
+    this.setData({
+      headImg: _user.headImg,
+      name: _user.name,
+      type: getApp().type,
+    })
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+    this.data.nameD = _user.name
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  editName() {
+    this.setData({
+      editName: true,
+      focus: true,
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  name(e) {
+    this.data.nameD = e.detail.value;
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //修改姓名
+  saveName() {
+    ccloading();
+    ajaxuserEdit(this.data.headImg, this.data.nameD, success => {
+      ccloadingHide();
+      this.setData({
+        editName: false,
+        name: this.data.nameD
+      })
+    }, (t, m) => {
+      ccloadingHide();
+      cctoast(m);
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  //修改头像
+  headImg() {
+    wx.chooseImage({
+      count: 1,
+      success: (res) => {
+        ccloading();
+        upImg(res.tempFilePaths[0], "userHeadImg", {
+          success: (res) => {
+            ajaxuserEdit(res, this.data.name, success => {
+              ccloadingHide();
+              this.setData({
+                headImg: res
+              })
+            }, (t, m) => {
+              ccloadingHide();
+              cctoast(m);
+            })
+          },
+          fail(t, m) {
+            ccloadingHide();
+            cctoast(m);
+          }
+        })
+      }
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  qrcode() {
+    ccnavigateTo("/cook/pages/qrcode/qrcode");
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  myCook(){
+    ccloading();
+    ajaxuserRelation(success => {
+      ccloadingHide();
+      if (success == "") {
+        ccmodal("您还没有御用大厨哦~", {
+          confirmText: "去选择",
+          success() {
+            ccnavigateTo("/eat/pages/bindCook/bindCook");
+          }
+        })
+      } else {
+        ccnavigateTo("/eat/pages/myCook/myCook");
+      }
+    }, (t, m) => {
+      ccloadingHide();
+      cctoast(m);
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  onHide() {
+    this.setData({
+      editName: false,
+      focus: false,
+    })
+  },
 })

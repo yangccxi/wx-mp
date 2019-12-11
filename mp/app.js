@@ -14,5 +14,6 @@ App({
     }
   },
   type: 0, //0暂未注册 1为厨师 2为吃货
+  user: {}, //headImg 用户头像 name 用户昵称 id openId
   bindOpenId: "", //吃货是否有绑定厨师
 })

@@ -79,7 +79,7 @@ export const upImg = (filePath, cloudPath, obj) => {
 export const ajaxuserLogin = (success, fail) => {
   ajax(USER.login, {
     success(res) {
-      success(res.type)
+      success(res.type, res.user)
     },
     fail(t, m) {
       fail(t, m)
@@ -96,7 +96,7 @@ export const ajaxuserReg = (type, headImg, name, success, fail) => {
       name,
     },
     success(res) {
-      success(res)
+      success(res.id, res.openId);
     },
     fail(t, m) {
       fail(t, m)
@@ -281,6 +281,40 @@ export const ajaxorderDone = (appraise, id, success, fail) => {
     },
     success(res) {
       success();
+    },
+    fail(t, m) {
+      fail(t, m);
+    }
+  })
+}
+
+//更新用户信息
+export const ajaxuserEdit = (headImg, name, success, fail) => {
+  ajax(USER.update, {
+    data: {
+      id: getApp().user.id,
+      headImg,
+      name,
+    },
+    success(res) {
+      getApp().user.headImg = headImg;
+      getApp().user.name = name;
+      success();
+    },
+    fail(t, m) {
+      fail(t, m);
+    }
+  })
+}
+
+//根据openId查询用户信息
+export const ajaxuserGetUserInfoByOpenId = (openId, success, fail) => {
+  ajax(USER.getUserInfoByOpenId, {
+    data: {
+      openId
+    },
+    success(res) {
+      success(res.user);
     },
     fail(t, m) {
       fail(t, m);

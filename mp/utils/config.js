@@ -8,6 +8,8 @@ export const USER = {
   "cookQRCode": "cookQRCode", //大厨二维码
   "cookQuery": "cookQuery", //查询大厨
   "bindCook": "relationAdd", //绑定大厨
+  "update": "userInfoEdit", //更新用户信息
+  "getUserInfoByOpenId": "getUserInfo", //根据openId查询用户信息
 }
 
 //菜谱接口
@@ -43,6 +45,8 @@ export const difficulty = [
 //菜谱类型
 export const foodType = [
   "家常菜",
+  "早餐",
+  "点心",
   "湘菜",
   "川菜",
   "粤菜",
