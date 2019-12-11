@@ -15,6 +15,7 @@ exports.main = async(event, context) => {
     type: 0,
     success: false,
     msg: "出现未知故障，请稍后再试",
+    user: {},
   }
 
   await db.collection("user").where({
@@ -24,6 +25,13 @@ exports.main = async(event, context) => {
     _r.msg = "成功";
     if (res.data.length) {
       _r.type = res.data[0].type;
+      let _data = res.data[0];
+      _r.user = {
+        "name": _data.name,
+        "headImg": _data.headImg,
+        "id": _data._id,
+        "openId": _openId,
+      }
     }
   }).catch(err => {
     console.info("openId=" + _openId + "=>出现问题：" + err)

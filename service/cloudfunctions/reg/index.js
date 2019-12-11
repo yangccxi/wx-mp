@@ -14,6 +14,8 @@ exports.main = async(event, context) => {
   let _r = {
     success: false,
     msg: "出现未知故障，请稍后再试",
+    id: "",
+    openId: _openId,
   }
 
   await db.collection("user").add({
@@ -27,6 +29,7 @@ exports.main = async(event, context) => {
   }).then(res => {
     _r.success = true;
     _r.msg = "成功";
+    _r.id = res._id;
   }).catch(err => {
     console.info("openId=" + _openId + "=>出现问题：" + err)
   })
