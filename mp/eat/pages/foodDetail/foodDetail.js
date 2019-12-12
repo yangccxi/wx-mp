@@ -6,6 +6,8 @@ import {
 
 import {
   ajaxorderAdd,
+  sendMsgHasOrder,
+  agreeMsg,
 } from "../../../utils/service.js";
 
 Page({
@@ -48,6 +50,7 @@ Page({
     }
     let _date = _nowS;
     if (this.data.date == "明天") _date = _tomorrowS;
+
     ccloading();
     ajaxorderAdd(_date, this.data.time, this.data.remark, this.data.ccfood, success => {
       ccloadingHide();
@@ -57,6 +60,10 @@ Page({
           url: "/pages/tabA/tabA"
         })
       }, 1000)
+      //吃货下单通知大厨
+      sendMsgHasOrder(getApp().bindOpenId, this.data.ccfood.map(v => {
+        return v.name;
+      }).join("+"))
     }, (t, m) => {
       ccloadingHide();
       cctoast(m);

@@ -10,3 +10,21 @@
   height: 400rpx;
   border-radius: 10rpx;
 }
+
+.run {
+  animation: rundo 10s infinite linear;
+}
+
+@keyframes rundo {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.boxScroll {
+  overflow: scroll;
+}

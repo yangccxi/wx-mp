@@ -11,6 +11,10 @@ import {
   ajaxfoodDelete,
 } from "../../../utils/service.js";
 
+import {
+  foodType
+} from "../../../utils/config.js";
+
 Page({
   data: {
     more: false,
@@ -18,14 +22,14 @@ Page({
     text: "",
     nothing: false,
     list: [],
-    height: 2000
-  },
-  onShow() {
-    this.loadAjax();
+    height: 2000,
+    typeR: [],
+    type: "正餐",
+    top: 0,
   },
   loadAjax() {
     ccloading();
-    ajaxfoodQuery(list => {
+    ajaxfoodQuery(this.data.type, list => {
       this.setData({
         list,
         nothing: list.length == 0 ? true : false
@@ -37,11 +41,23 @@ Page({
     })
   },
   onReady() {
-    cciphone6size(0, height => {
+    cciphone6size(96, height => {
       this.setData({
         height
       })
     })
+    this.setData({
+      typeR: foodType
+    })
+    this.loadAjax();
+  },
+  type(e) {
+    this.setData({
+      top: 0,
+      list: [],
+      type: this.data.typeR[e.detail.value]
+    })
+    this.loadAjax();
   },
   foodAdd() {
     ccnavigateTo("../foodAdd/foodAdd");

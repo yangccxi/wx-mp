@@ -12,7 +12,9 @@ import {
   ajaxQuery,
   upImg,
   ajaxorderUpdate,
-  ajaxorderDone
+  ajaxorderDone,
+  agreeMsg,
+  sendMsgDoneFood,
 } from "../../utils/service.js";
 
 Page({
@@ -76,26 +78,30 @@ Page({
   },
   //厨师我的菜谱
   food() {
-    ccnavigateTo("/cook/pages/food/food");
+    agreeMsg("cook", () => {
+      ccnavigateTo("/cook/pages/food/food");
+    })
   },
   //吃货我的菜谱
   foodE() {
     ccloading();
-    ajaxuserRelation(success => {
-      ccloadingHide();
-      if (success == "") {
-        ccmodal("您还没有御用大厨哦~", {
-          confirmText: "去选择",
-          success() {
-            ccnavigateTo("/eat/pages/bindCook/bindCook");
-          }
-        })
-      } else {
-        ccnavigateTo("/eat/pages/food/food");
-      }
-    }, (t, m) => {
-      ccloadingHide();
-      cctoast(m);
+    agreeMsg("eat", () => {
+      ajaxuserRelation(success => {
+        ccloadingHide();
+        if (success == "") {
+          ccmodal("您还没有御用大厨哦~", {
+            confirmText: "去选择",
+            success() {
+              ccnavigateTo("/eat/pages/bindCook/bindCook");
+            }
+          })
+        } else {
+          ccnavigateTo("/eat/pages/food/food");
+        }
+      }, (t, m) => {
+        ccloadingHide();
+        cctoast(m);
+      })
     })
   },
   //厨师上传图片
@@ -107,7 +113,7 @@ Page({
         ccloading();
         upImg(res.tempFilePaths[0], "workFood", {
           success: (res) => {
-            console.info(res)
+            ccloading();
             ajaxorderUpdate(res, e.currentTarget.dataset.id, success => {
               ccloadingHide();
               cctoast("搞定！");
@@ -117,6 +123,11 @@ Page({
                   list: this.data.list
                 })
               }, 1000)
+              //大厨完成菜肴通知吃货
+              sendMsgDoneFood(e.currentTarget.dataset.openid, e.currentTarget.dataset.food.map(v => {
+                return v.name;
+              }).join("+"))
+              
             }, (t, m) => {
               ccloadingHide();
               cctoast(m);

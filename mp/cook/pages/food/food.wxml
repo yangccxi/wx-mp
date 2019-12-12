@@ -1,4 +1,11 @@
-<pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
+<picker range="{{typeR}}" bindchange="type">
+  <view hover-class="hover_gray" style="height:96rpx;padding:0 30rpx;" class="fl_b br_bot">
+    <view>{{type}}</view>
+    <view class="arrow"></view>
+  </view>
+</picker>
+
+<pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}" top="{{top}}">
   <view style="height:30rpx;"></view>
   <view wx:for="{{list}}" wx:key="{{index}}" class="img p_r o_h" style="margin-bottom:30rpx;">
     <image mode="aspectFill" src="{{item.img}}"></image>
@@ -10,6 +17,7 @@
       <image src="/images/delete.png" style="width:48rpx;height:48rpx;"></image>
     </view>
   </view>
+  <view style="height:1px;"></view>
   <nothing bind:click="foodAdd" show="{{nothing}}" showBtn="{{true}}" btn="添加菜谱" nothing="暂时没有菜谱哦~ 可以马上添加菜谱"></nothing>
 </pullDown>
 

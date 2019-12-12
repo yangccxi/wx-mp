@@ -1,4 +1,11 @@
-<pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
+<picker range="{{typeR}}" bindchange="type">
+  <view hover-class="hover_gray" style="height:96rpx;padding:0 30rpx;" class="fl_b br_bot">
+    <view>{{type}}</view>
+    <view class="arrow"></view>
+  </view>
+</picker>
+
+<pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}" top="{{top}}">
   <view style="height:30rpx;"></view>
   <view bindtap="choose" data-index="{{index}}" wx:for="{{list}}" wx:key="{{index}}" class="img p_r o_h" style="margin-bottom:30rpx;">
     <image mode="aspectFill" src="{{item.img}}"></image>
@@ -7,10 +14,35 @@
       <view class="co_f fs24">{{item.foodType}} {{item.difficulty}}难度</view>
     </view>
     <view style="width:96rpx;height:96rpx;bottom:0;right:0;" class="p_a fl_c">
-      <view wx:if="{{item.choose}}" class="co_9 fs26">已选</view>
-      <view wx:else class="co_te fs26">选我</view>
+      <icon type="success" color="#{{item.choose?'ef2b2b':'cccccc'}}"></icon>
     </view>
   </view>
   <nothing show="{{nothing}}" nothing="这个厨子真懒，还没有上传菜谱"></nothing>
 </pullDown>
-<view bindtap="foodDetail" class="btn btn_bot">选好了</view>
+
+<view hover-class="hover" bindtap="foodDetail" class="btn btn_bot">选好了</view>
+<view bindtap="showBox" style="width:120rpx;height:120rpx;border-radius:120rpx;border:4rpx solid #ef2b2b;left:30rpx;bottom:28rpx;" class="p_f bg_f fl_c run">
+  <image src="/images/tabA_on.png" style="width:80rpx;height:80rpx;"></image>
+</view>
+<view style="width:40rpx;height:40rpx;border-radius:40rpx;left:120rpx;bottom:110rpx;font-family: Arial, Helvetica, sans-serif;" class="p_f fl_c bg_te co_f fw_b fs24">{{newList.length}}</view>
+
+
+<view style="width:750rpx;height:750rpx;left:0;bottom:{{showBox?'0':'-750rpx'}};z-index:6;transition:0.3s;" class="p_f bg_f">
+  <view bindtap="hideBox" style="height:50rpx;" class="fl_c br_bot">
+    <view class="arrow_down"></view>
+  </view>
+  <view class="boxScroll" style="height:612rpx;">
+    <view wx:for="{{newList}}" wx:key="{{index}}" style="height:130rpx;margin-left:30rpx;" class="fl_b br_bot">
+      <view class="fl_s">
+        <image mode="aspectFill" style="width:96rpx;height:96rpx;border-radius:10rpx;" src="{{item.img}}"></image>
+        <view class="fs28 fw_b el_one" style="width:470rpx;margin-left:20rpx;">{{item.name}}</view>
+      </view>
+      <view bindtap="delete" data-index="{{index}}" style="width:96rpx;height:96rpx;" class="fl_c">
+        <image src="/images/delete.png" style="width:40rpx;height:40rpx;"></image>
+      </view>
+    </view>
+    <nothing show="{{newList.length==0}}" nothing="还没有选择美食哦~"></nothing>
+  </view>
+  <view hover-class="hover" bindtap="foodDetail" class="btn" style="width:750rpx;border-radius:0;">选好了</view>
+</view>
+<view wx:if="{{showBox}}" bindtap="hideBox" class="mask"></view>

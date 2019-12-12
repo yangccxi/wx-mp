@@ -21,7 +21,7 @@ Page({
     difficulty,
     foodType,
     difficultyT: "简单",
-    foodTypeT: "家常菜"
+    foodTypeT: "正餐"
   },
   upImg() {
     wx.chooseImage({

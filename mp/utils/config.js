@@ -1,4 +1,4 @@
-const IMG = "cloud://cytar-b74bc9.691f-cytar-b74bc9-1257593555/";
+const IMG = "cloud://cytar-3rpre.6379-cytar-3rpre-1257593555/";
 
 //用户接口
 export const USER = {
@@ -29,6 +29,12 @@ export const ORDER = {
   "done": "orderDone", //吃货评价完成订单
 }
 
+//发送微信消息
+export const MSG = {
+  "hasOrder": "sendMsgHasOrder", //当吃货下单时提示大厨有新的订单
+  "doneFood": "sendMsgDoneFood", //大厨完成菜品通知吃货
+}
+
 //默认参数
 export const DF = {
   "headImgCook": IMG + "icon/cook.jpg", //厨师头像
@@ -44,10 +50,8 @@ export const difficulty = [
 
 //菜谱类型
 export const foodType = [
-  "家常菜",
+  "正餐",
   "早餐",
-  "点心",
-  "湘菜",
-  "川菜",
-  "粤菜",
+  "甜点",
+  "夜宵",
 ]

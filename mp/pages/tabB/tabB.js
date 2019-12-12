@@ -9,6 +9,7 @@ import {
   ccloadingHide,
   cctoast,
   ccnavigateTo,
+  ccmodal,
 } from "../../utils/util.js";
 
 Page({
@@ -86,6 +87,7 @@ Page({
   myCook(){
     ccloading();
     ajaxuserRelation(success => {
+      console.info(success)
       ccloadingHide();
       if (success == "") {
         ccmodal("您还没有御用大厨哦~", {

@@ -4,6 +4,7 @@ import {
   USER,
   FOOD,
   ORDER,
+  MSG,
 } from "./config.js";
 
 /**
@@ -123,8 +124,11 @@ export const ajaxfoodAdd = (img, name, difficulty, foodType, success, fail) => {
 }
 
 //厨师查询菜谱列表
-export const ajaxfoodQuery = (success, fail) => {
+export const ajaxfoodQuery = (type, success, fail) => {
   ajax(FOOD.query, {
+    data: {
+      type
+    },
     success(res) {
       success(res.list)
     },
@@ -167,10 +171,11 @@ export const ajaxuserRelation = (success, fail) => {
 }
 
 //吃货根据openId查询菜谱列表
-export const ajaxfoodQueryByOpenId = (openId, success, fail) => {
+export const ajaxfoodQueryByOpenId = (openId, type, success, fail) => {
   ajax(FOOD.queryByOpenId, {
     data: {
-      openId
+      openId,
+      type,
     },
     success(res) {
       success(res.list)
@@ -318,6 +323,58 @@ export const ajaxuserGetUserInfoByOpenId = (openId, success, fail) => {
     },
     fail(t, m) {
       fail(t, m);
+    }
+  })
+}
+
+//当吃货下单时提示大厨有新的订单
+export const sendMsgHasOrder = (openId, food) => {
+  ajax(MSG.hasOrder, {
+    data: {
+      openId,
+      name: getApp().user.name,
+      food,
+    },
+    success(res) {
+
+    },
+    fail(t, m) {
+
+    },
+  })
+}
+
+//大厨完成菜品通知吃货
+export const sendMsgDoneFood = (openId, food) => {
+  ajax(MSG.hasOrder, {
+    data: {
+      openId,
+      name: getApp().user.name,
+      food,
+    },
+    success(res) {
+
+    },
+    fail(t, m) {
+
+    },
+  })
+}
+
+//同意接受消息通知
+export const agreeMsg = (type, call) => {
+  let _r = ["ZD0uJfjQI4wdTPkw7nTeAk1N1ES2YqryIhLZFrwwGtw"];
+  if (type == "eat") _r = ["CHFd9WJYWQOf1w38NrV4CJ36EO9YpmczSY98r_mnWo4"];
+  wx.requestSubscribeMessage({
+    tmplIds: _r,
+    success(res) {
+      console.info(res)
+    },
+    fail(res) {
+      console.info(res)
+    },
+    complete: () => {
+      call();
     }
   })
 }
