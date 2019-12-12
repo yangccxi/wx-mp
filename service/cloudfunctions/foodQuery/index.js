@@ -1,8 +1,10 @@
 //根据openId查询菜谱列表
-//出参 int test 说明
+//入参 string type 正餐 早餐 甜点 夜宵
 const cloud = require('wx-server-sdk');
 
-cloud.init();
+cloud.init({
+  env: "cytar-3rpre"
+});
 
 exports.main = async(event, context) => {
   const wxContext = cloud.getWXContext();
@@ -16,7 +18,8 @@ exports.main = async(event, context) => {
   }
 
   await db.collection("food").where({
-    openId: _openId
+    openId: _openId,
+    foodType: event.type,
   }).get().then(res => {
     //满足条件
     _r.success = true;
