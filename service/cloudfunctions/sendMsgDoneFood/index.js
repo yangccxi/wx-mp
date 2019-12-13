@@ -23,10 +23,10 @@ exports.main = async (event, context) => {
           value: _food
         },
         thing11: {
-          value: "美味已完成，快来看看吧~"
+          value: "美味已完成,快来看看吧"
         },
       },
-      templateId: 'CHFd9WJYWQOf1w38NrV4CJ36EO9YpmczSY98r_mnWo4'
+      templateId: 'CHFd9WJYWQOf1w38NrV4CBovj655dxGXHUbbtfC-i3o'
     })
     return result
   } catch (err) {

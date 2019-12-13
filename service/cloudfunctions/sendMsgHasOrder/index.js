@@ -16,14 +16,14 @@ exports.main = async(event, context) => {
       touser: event.openId,
       page: 'pages/index/index',
       data: {
-        thing5: {
-          value: _food
-        },
         thing2: {
           value: _name
         },
+        thing5: {
+          value: _food
+        },
       },
-      templateId: 'ZD0uJfjQI4wdTPkw7nTeAk1N1ES2YqryIhLZFrwwGtw'
+      templateId: 'ZD0uJfjQI4wdTPkw7nTeAp8aMSsn8_R3ObjTjHEFbhI'
     })
     return result
   } catch (err) {
