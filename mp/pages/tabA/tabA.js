@@ -107,13 +107,12 @@ Page({
   //厨师上传图片
   cook(e) {
     this.data.show = false;
+    ccloading();
     wx.chooseImage({
       count: 1,
       success: (res) => {
-        ccloading();
         upImg(res.tempFilePaths[0], "workFood", {
           success: (res) => {
-            ccloading();
             ajaxorderUpdate(res, e.currentTarget.dataset.id, success => {
               ccloadingHide();
               cctoast("搞定！");
@@ -138,6 +137,9 @@ Page({
             cctoast(m);
           }
         })
+      },
+      fail:()=>{
+        ccloadingHide();
       }
     })
   },

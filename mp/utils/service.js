@@ -346,7 +346,7 @@ export const sendMsgHasOrder = (openId, food) => {
 
 //大厨完成菜品通知吃货
 export const sendMsgDoneFood = (openId, food) => {
-  ajax(MSG.hasOrder, {
+  ajax(MSG.doneFood, {
     data: {
       openId,
       name: getApp().user.name,
@@ -363,8 +363,8 @@ export const sendMsgDoneFood = (openId, food) => {
 
 //同意接受消息通知
 export const agreeMsg = (type, call) => {
-  let _r = ["ZD0uJfjQI4wdTPkw7nTeAk1N1ES2YqryIhLZFrwwGtw"];
-  if (type == "eat") _r = ["CHFd9WJYWQOf1w38NrV4CJ36EO9YpmczSY98r_mnWo4"];
+  let _r = ["ZD0uJfjQI4wdTPkw7nTeAp8aMSsn8_R3ObjTjHEFbhI"];
+  if (type == "eat") _r = ["CHFd9WJYWQOf1w38NrV4CBovj655dxGXHUbbtfC-i3o"];
   wx.requestSubscribeMessage({
     tmplIds: _r,
     success(res) {
