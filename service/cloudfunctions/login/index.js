@@ -4,7 +4,9 @@
 //如果没有则返回身份type:0
 const cloud = require('wx-server-sdk')
 
-cloud.init()
+cloud.init({
+  env: "cytar-3rpre"
+});
 
 exports.main = async(event, context) => {
   const wxContext = cloud.getWXContext()
