@@ -9,7 +9,7 @@
   </view>
   <pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
     <view style="height:30rpx;"></view>
-    <view class="bg_f" style="width:690rpx;margin:0 30rpx;border-radius:10rpx;overflow:hidden;" wx:for="{{list}}" wx:key="{{index}}">
+    <view class="bg_f" style="width:690rpx;margin:0 30rpx 30rpx;border-radius:10rpx;overflow:hidden;" wx:for="{{list}}" wx:key="{{index}}">
       <view class="fl_s fw_b" style="margin:0 30rpx;height:96rpx;">{{item.date}}的{{item.time}}</view>
       <swiper class="p_r" indicator-dots autoplay indicator-active-color="#ef2b2b" style="width:690rpx;height:400rpx;">
         <swiper-item wx:for="{{item.food}}" wx:key="{{index}}">
@@ -24,6 +24,7 @@
       <view hover-class="hover" bindtap="cook" data-id="{{item._id}}" data-index="{{index}}" data-openid="{{item.openId}}" data-food="{{item.food}}" wx:if="{{item.status=='wait'}}" class="fl_c co_f bg_te fw_b" style="height:96rpx;">搞定ta</view>
       <view hover-class="hover" bindtap="look" data-img="{{item.cookImg}}" data-appraise="{{item.appraise}}" wx:elif="{{item.status=='done'}}" class="fl_c co_f bg_te fw_b" style="height:96rpx;">戳我看评价</view>
     </view>
+    <view style="height:1px;"></view>
     <nothing show="{{nothing}}" showBtn="{{false}}" btn="分享菜肴" nothing="暂时没有服务哦~"></nothing>
   </pullDown>
 </block>
@@ -38,7 +39,7 @@
   </view>
   <pullDown height="{{height}}" more="{{more}}" text="{{text}}" pull="{{pull}}">
     <view style="height:30rpx;"></view>
-    <view class="bg_f" style="width:690rpx;margin:0 30rpx;border-radius:10rpx;overflow:hidden;" wx:for="{{list}}" wx:key="{{index}}">
+    <view class="bg_f" style="width:690rpx;margin:0 30rpx 30rpx;border-radius:10rpx;overflow:hidden;" wx:for="{{list}}" wx:key="{{index}}">
       <view class="fl_s fw_b" style="margin:0 30rpx;height:96rpx;">{{item.date}}的{{item.time}}</view>
       <swiper class="p_r" indicator-dots autoplay indicator-active-color="#ef2b2b" style="width:690rpx;height:400rpx;">
         <swiper-item wx:for="{{item.food}}" wx:key="{{index}}">
@@ -52,6 +53,7 @@
       <view class="fl_s" style="padding:30rpx;">备注：{{item.remark}}</view>
       <view hover-class="hover" bindtap="appraise" data-id="{{item._id}}" data-index="{{index}}" data-img="{{item.cookImg}}" wx:if="{{item.status=='cook'}}" class="fl_c co_f bg_te fw_b" style="height:96rpx;">评价ta</view>
     </view>
+    <view style="height:1px;"></view>
     <nothing show="{{nothing}}" showBtn="{{true}}" bind:click="foodE" btn="寻找美食" nothing="暂时没有美食提供哦~"></nothing>
   </pullDown>
 </block>

@@ -107,50 +107,54 @@ Page({
   //厨师上传图片
   cook(e) {
     this.data.show = false;
-    ccloading();
-    wx.chooseImage({
-      count: 1,
-      success: (res) => {
-        upImg(res.tempFilePaths[0], "workFood", {
-          success: (res) => {
-            ajaxorderUpdate(res, e.currentTarget.dataset.id, success => {
-              ccloadingHide();
-              cctoast("搞定！");
-              setTimeout(() => {
-                this.data.list[e.currentTarget.dataset.index].status = "cook";
-                this.setData({
-                  list: this.data.list
-                })
-              }, 1000)
-              //大厨完成菜肴通知吃货
-              sendMsgDoneFood(e.currentTarget.dataset.openid, e.currentTarget.dataset.food.map(v => {
-                return v.name;
-              }).join("+"))
-              
-            }, (t, m) => {
+    agreeMsg("cook", () => {
+      ccloading();
+      wx.chooseImage({
+        count: 1,
+        success: (res) => {
+          ccloading();
+          upImg(res.tempFilePaths[0], "workFood", {
+            success: (res) => {
+              ccloading();
+              ajaxorderUpdate(res, e.currentTarget.dataset.id, success => {
+                ccloadingHide();
+                cctoast("搞定！");
+                setTimeout(() => {
+                  this.data.list[e.currentTarget.dataset.index].status = "cook";
+                  this.setData({
+                    list: this.data.list
+                  })
+                }, 1000)
+                //大厨完成菜肴通知吃货
+                sendMsgDoneFood(e.currentTarget.dataset.openid, e.currentTarget.dataset.food.map(v => {
+                  return v.name;
+                }).join("+"))
+
+              }, (t, m) => {
+                ccloadingHide();
+                cctoast(m);
+              })
+            },
+            fail(t, m) {
               ccloadingHide();
               cctoast(m);
-            })
-          },
-          fail(t, m) {
-            ccloadingHide();
-            cctoast(m);
-          }
-        })
-      },
-      fail:()=>{
-        ccloadingHide();
-      }
+            }
+          })
+        },
+        fail: () => {
+          ccloadingHide();
+        }
+      })
     })
   },
   //吃货评价
   appraise(e) {
     this.setData({
-      appraise: true
+      appraise: true,
+      cookImg: e.currentTarget.dataset.img,
     })
     this.data.id = e.currentTarget.dataset.id;
     this.data.index = e.currentTarget.dataset.index;
-    this.data.cookImg = e.currentTarget.dataset.img;
   },
   //吃货滑块
   slide(e) {

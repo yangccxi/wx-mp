@@ -363,7 +363,7 @@ export const sendMsgDoneFood = (openId, food) => {
 
 //同意接受消息通知
 export const agreeMsg = (type, call) => {
-  let _r = ["ZD0uJfjQI4wdTPkw7nTeAp8aMSsn8_R3ObjTjHEFbhI"];
+  let _r = ["mrG_dW1OtAs3Mp6qH7DXAFhZwvFt7shkST_9aSWRZyQ"];
   if (type == "eat") _r = ["CHFd9WJYWQOf1w38NrV4CBovj655dxGXHUbbtfC-i3o"];
   wx.requestSubscribeMessage({
     tmplIds: _r,
