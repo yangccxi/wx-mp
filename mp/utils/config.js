@@ -50,7 +50,8 @@ export const difficulty = [
 
 //菜谱类型
 export const foodType = [
-  "正餐",
+  "午餐",
+  "晚餐",
   "早餐",
   "甜点",
   "夜宵",
