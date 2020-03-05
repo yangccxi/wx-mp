@@ -378,3 +378,14 @@ export const agreeMsg = (type, call) => {
     }
   })
 }
+
+export const ajaxconfig = (success) => {
+  ajax(USER.config, {
+    success(res) {
+      success(res.list[0]);
+    },
+    fail() {
+      
+    }
+  })
+}

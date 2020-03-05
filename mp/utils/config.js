@@ -10,6 +10,7 @@ export const USER = {
   "bindCook": "relationAdd", //绑定大厨
   "update": "userInfoEdit", //更新用户信息
   "getUserInfoByOpenId": "getUserInfo", //根据openId查询用户信息
+  "config": "config"
 }
 
 //菜谱接口

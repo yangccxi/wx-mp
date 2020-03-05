@@ -10,7 +10,8 @@
     "eat/pages/bindCook/bindCook",
     "eat/pages/foodDetail/foodDetail",
     "cook/pages/qrcode/qrcode",
-    "eat/pages/myCook/myCook"
+    "eat/pages/myCook/myCook",
+    "pages/note/note"
   ],
   "usingComponents": {
     "pullDown": "/component/pullDown/pullDown",

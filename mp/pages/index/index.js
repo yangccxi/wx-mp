@@ -1,5 +1,6 @@
 import {
-  ajaxuserLogin
+  ajaxuserLogin,
+  ajaxconfig
 } from "../../utils/service.js";
 
 import {
@@ -8,20 +9,30 @@ import {
 
 Page({
   onReady() {
-    ajaxuserLogin((type, user) => {
-      if (type == 0) {
+    ajaxconfig((res) => {
+      console.info(res.note)
+      if (res.note) {
         wx.redirectTo({
-          url: "../reg/reg",
+          url: '../note/note',
         })
       } else {
-        getApp().type = type;
-        getApp().user = user;
-        wx.switchTab({
-          url: "../tabA/tabA"
+        ajaxuserLogin((type, user) => {
+          if (type == 0) {
+            wx.redirectTo({
+              url: "../reg/reg",
+            })
+          } else {
+            getApp().type = type;
+            getApp().user = user;
+            wx.switchTab({
+              url: "../tabA/tabA"
+            })
+          }
+        }, (fail, msg) => {
+          cctoast(msg)
         })
       }
-    }, (fail, msg) => {
-      cctoast(msg)
     })
+
   }
 })

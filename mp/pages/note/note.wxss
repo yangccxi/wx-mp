@@ -1,0 +1,13 @@
+.a{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.move{
+  animation: movedo ease-in-out 2s infinite;
+}
+
+@keyframes movedo{
+  0%{margin-top: -200rpx;}
+  50%{margin-top: -160rpx;}
+  100%{margin-top: -200rpx;}
+}
