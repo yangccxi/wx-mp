@@ -11,7 +11,8 @@
     "eat/pages/foodDetail/foodDetail",
     "cook/pages/qrcode/qrcode",
     "eat/pages/myCook/myCook",
-    "pages/note/note"
+    "pages/note/note",
+    "pages/noteIndex/noteIndex"
   ],
   "usingComponents": {
     "pullDown": "/component/pullDown/pullDown",

@@ -1,0 +1,20 @@
+<view class="bgco fl_s" style="height:200rpx;padding:0 30rpx;">
+	<image src="/images/head.jpg" style="width:100rpx;height:100rpx;border-radius:100rpx;border:4rpx solid rbga(255,255,255,0.6);"></image>
+	<view style="margin-left:20rpx;">
+		<view class="fl_s" style="margin-bottom:10rpx;">
+			<view class="co_f fs36 fw_b" style="width:100rpx;">杨希</view>
+			<view class="co_f fs24">求职意向：web前端工程师(in 长沙)</view>
+		</view>
+		<view class="fl_s">
+			<view class="co_f fs24">1988.09.18</view>
+			<view bindtap="copy" class="co_f fs24" style="margin:0 10rpx 0 30rpx;">WeChat：cc_myWorld</view>
+			<image bindtap="copy" src="/images/copy.png" style="width:30rpx;height:30rpx;"></image>
+		</view>
+	</view>
+</view>
+
+<view class="title">掌握技能</view>
+
+<scroll-view scroll-x class='tab' style="padding:0 10rpx;">
+	<image wx:for='{{tabs}}' wx:key='item' src="/images/{{item}}.png"></image>
+</scroll-view>

@@ -1,0 +1,27 @@
+.co {
+  color: #2d3548;
+}
+
+.bgco {
+  background-color: #2d3548;
+}
+
+.title{
+  font-size: 32rpx;
+  font-weight: bold;
+  padding-left: 20rpx;
+  border-left: 10rpx solid #2d3548;
+  line-height: 1;
+  margin: 30rpx 0;
+}
+
+.tab {
+  white-space: nowrap;   
+}
+
+.tab image {
+  width: 66rpx;
+  height: 66rpx;
+  display: inline-block;
+  margin: 0 10rpx;
+}
